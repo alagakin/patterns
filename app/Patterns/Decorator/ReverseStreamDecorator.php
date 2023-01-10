@@ -4,9 +4,15 @@ namespace App\Patterns\Decorator;
 
 class ReverseStreamDecorator extends StreamDecorator
 {
-    protected function handleBufferFull()
+    public function putInt(int $int)
     {
-        static::$buffer = strrev(static::$buffer);
-        $this->component->handleBufferFull();
+        $int = strrev($int);
+        parent::putInt($int);
+    }
+
+    public function putString(string $string)
+    {
+        $string = strrev($string);
+        parent::putInt($string);
     }
 }

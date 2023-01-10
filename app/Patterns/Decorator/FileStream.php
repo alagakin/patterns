@@ -15,7 +15,11 @@ class FileStream extends Stream
 
     protected function handleBufferFull()
     {
-        Storage::disk('local')->append($this->filename, static::$buffer);
-        static::$buffer = '';
+        $stringToWrite = substr(static::$buffer, 0, $this->bufferMaxSize);
+        Storage::disk('local')->append($this->filename, $stringToWrite);
+        static::$buffer = substr(static::$buffer, $this->bufferMaxSize, strlen(static::$buffer) - $this->bufferMaxSize);
+        if (strlen(static::$buffer) > $this->bufferMaxSize) {
+            $this->handleBufferFull();
+        }
     }
 }

@@ -11,9 +11,8 @@ class Client
                 new FileStream('stream_output.txt')
             )
         );
-        for ($i = 0; $i <= 5; $i++) {
-            $filestream->putInt(738917);
-            $filestream->putString('some string');
+        for ($i = 0; $i <= 9; $i++) {
+            $filestream->putString('123456789');
         }
     }
 }
