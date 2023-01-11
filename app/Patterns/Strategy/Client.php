@@ -10,20 +10,9 @@ class Client
         $items = 10000;
         $array = range(0, $items);
         shuffle($array);
-        $sorter = new Sorter(new BubbleSortStrategy(), $array);
+        $sorter = new Sorter(new InsertionSortStrategy(), $array);
+        $sorter->sort();
+        return $sorter->getExecutionTime();
 
-        $bubbleSorted = $sorter->sort();
-        $bubbleExecutionTime = $sorter->getExecutionTime();
-
-        $sorter->setStrategy(new StandardSortStrategy());
-
-        $standardSorted = $sorter->sort();
-        $standardExecutionTime = $sorter->getExecutionTime();
-
-        echo 'Items: ' . $items;
-        echo '<br>';
-        echo 'bubble sort: ' . $bubbleExecutionTime;
-        echo '<br>';
-        echo 'standard sort: ' . $standardExecutionTime;
     }
 }
