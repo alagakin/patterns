@@ -16,5 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return \App\Patterns\AbstractFactory\Client::call();
+    return \App\Patterns\Command\Client::call();
 });
