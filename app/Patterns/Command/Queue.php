@@ -21,7 +21,7 @@ class Queue
 
     public function undo()
     {
-        foreach ($this->commands as $command)
+        foreach (array_reverse($this->commands) as $command)
         {
             $command->undo();
         }
